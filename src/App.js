@@ -1,10 +1,11 @@
-import './App.css';
-import AppRouter from './router/AppRouter';
+import { CssBaseline } from "@mui/material";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
-    <div >
-      <AppRouter/>
+    <div>
+      <CssBaseline />
+      <AppRouter />
     </div>
   );
 }
