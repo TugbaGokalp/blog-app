@@ -17,11 +17,12 @@ const BlogForm = () => {
         display: "flex",
         flexDirection: "column",
         gap: 2,
+         width:"100%"
       }}
       component="form"
-      width="100%"
+     
     >
-      <Typography variant="h5" align="left" sx={{ fontWeight: 900 }}>
+      <Typography variant="h5" align="center" sx={{ fontWeight: 800 }}>
         New Blog
       </Typography>
 
@@ -50,6 +51,7 @@ const BlogForm = () => {
           //value={age}
           label="Categories"
           //onChange={handleChange}
+      
         >
           <MenuItem value={10}>Trivia</MenuItem>
           <MenuItem value={20}>Travel</MenuItem>

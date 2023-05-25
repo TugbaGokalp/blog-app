@@ -10,6 +10,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Link } from "react-router-dom";
 
 export default function BlogCard() {
   const butonStyle = {
@@ -235,7 +236,7 @@ export default function BlogCard() {
                   <span>3</span>
                 </IconButton>
               </Typography>
-              <Button size="small" sx={butonStyle} variant="contained">Read More</Button>
+              <Button size="small" sx={butonStyle} component={Link} to="/detail/1" variant="contained">Read More</Button>
             </CardActions>
           </Card>
         </Grid>
