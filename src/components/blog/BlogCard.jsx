@@ -23,7 +23,7 @@ export default function BlogCard() {
   };
 
   return (
-    <Grid container align="center" spacing={2} sx={{minHeight:"90vh",display:"flex", alignItems:"center"}}>
+    <Grid container align="center" spacing={2} sx={{minHeight:"90vh",display:"flex", justify: "center", alignItems:"center"}}>
           <Grid item xs={12} sm={6} md={4} lg={3}>
                 <Card sx={{ maxWidth: 345 }}>
                   <CardMedia
