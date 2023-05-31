@@ -8,7 +8,7 @@
 npm install or yarn
 ```
 
-![Project Snapshot](Blog App.gif)
+![Project Snapshot](Blog-app.gif)
 
 
 ## Project Skeleton
