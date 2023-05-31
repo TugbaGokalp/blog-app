@@ -24,8 +24,8 @@ const butonStyle = {
 const BlogCard = () => {
  const navigate =useNavigate()
   
-  const { blogsList } = useSelector((state) => state.blog);
-  console.log(blogsList);
+ const { blogs } = useSelector((state) => state.blog);
+ console.log(blogs);
 
   const handleNavigate=(id)=>{
     navigate(`/detail/${id}`)    
@@ -38,7 +38,7 @@ const BlogCard = () => {
       spacing={2}
       sx={{ minHeight: "90vh", display: "flex", alignItems: "center", p: 2 }}
     >
-      {blogsList?.map((item) => {
+      {blogs?.map((item) => {
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
             <Card sx={{ maxWidth: 345 }}>
@@ -47,6 +47,7 @@ const BlogCard = () => {
                 alt="green iguana"
                 height="140"
                 image={item?.image}
+                sx={{objectFit:"contain"}}
               />
               <CardContent>
                 <Typography

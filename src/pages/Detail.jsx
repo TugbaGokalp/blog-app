@@ -26,7 +26,7 @@ const Detail = () => {
     title,
     content,
     image,
-    category,
+
     likes,
     publish_date,
     comment_count,
@@ -51,7 +51,7 @@ const Detail = () => {
 
   useEffect(() => {
     getIdData();
-  }, []);
+  });
 
   return (
     <Box sx={{ minHeight: "90vh" }}>
