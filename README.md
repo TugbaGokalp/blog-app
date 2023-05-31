@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# STOCK APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This project is a website that pulls data from a real database and users can blog, edit, comment and like.
 
-## Available Scripts
+## `Installation`
 
-In the project directory, you can run:
+```
+npm install or yarn
+```
 
-### `npm start`
+![Project Snapshot](Blog App.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Skeleton
 
-### `npm test`
+```
+|----readme.md       (#Definition of the project)  
+SOLUTION
+├── src
+|    ├── index.css
+|    ├── index.js
+|    ├── App.css
+|    ├── App.js
+|    ├── app
+|    │   └── store.jsx
+|    ├── assets
+|    │   ├── about.png
+|    ├── components
+|    │   ├── auth
+|    │   │   ├── LoginFom.jsx
+|    │   │   └── RegisterForm.jsx
+|    │   ├── blog
+|    │   │   ├── Card.jsx
+|    │   │   ├── CommentCard.jsx
+|    │   │   ├── CommentForm.jsx
+|    │   │   ├── DeleteModal.jsx
+|    │   │   └── UpdateModal.jsx
+|    │   ├── FooTer.jsx
+|    │   ├── NavBar.jsx
+|    ├── features
+|    │   ├── authSlice.jsx
+|    │   └── blogSlice.jsx
+|    ├── helper
+|    │   └── ToastNotify.jsx
+|    ├── hooks
+|    │   ├── useAuthCalls.jsx
+|    │   ├── useAxios.jsx
+|    │   └── useBlogCalls.jsx
+|    ├── pages
+|    │   ├── About.jsx
+|    │   ├── Dashboard.jsx
+|    │   ├── Detail.jsx
+|    │   ├── Login.jsx
+|    │   ├── NewBlog.jsx
+|    │   ├── NotFound.jsx
+|    │   ├── Profile.jsx
+|    │   └── Register.jsx
+|    └── router
+|        ├── AppRouter.jsx
+|        └── PrivateRouter.jsx
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Utilization
 
-### `npm run build`
+If an account does not exist, an account must be created first to create new blog.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## The project is developed using various libraries, and the libraries used and their purposes are listed below:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `@reduxjs/toolkit`: Used for managing application state with Redux toolkit.
+- `react-redux`: Used to integrate Redux into the React application.
+- `axios`: Used for making HTTP requests.
+- `react-router-dom`: Used for navigation and page routing within the application.
+- `@mui/material-ui`: Material UI component library used for creating user interface elements.
+- `yup`: Used for schema validation.
+- `@mui/icons-material`: Used for using Material UI icons.
+- `@mui/x-data-grid`: Used for creating data table components.
+- `@tremor/react`: Used for creating charts.
+- `formik`: Used for form handling and validation.
+- `react-persist`: Used for storing application state in local storage.
+- `react-toastify`: Used for displaying notification messages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
