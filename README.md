@@ -64,6 +64,13 @@ SOLUTION
 
 If an account does not exist, an account must be created first to create new blog.
 
+Please pay attention to the following.
+
+- You cannot comment on your own blog.
+- Once you like a blog, you can't like it again.
+- You cannot update or comment on blogs that do not belong to you.
+- You must be registered to see the blog details.
+
 ## The project is developed using various libraries, and the libraries used and their purposes are listed below:
 
 - `@reduxjs/toolkit`: Used for managing application state with Redux toolkit.
