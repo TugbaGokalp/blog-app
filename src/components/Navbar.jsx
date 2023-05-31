@@ -10,9 +10,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useAuthCall from "../hooks/useAuthCall";
+
 const pages = [
   {
     title: "DASHBOARD",
@@ -27,27 +30,58 @@ const pages = [
     url: "/about",
   },
 ];
-const settings = ["Login"];
+
+const settings = [
+  {
+    name: "Profile",
+    url: "/profile",
+  },
+  {
+    name: "My Blogs",
+    url: "/my-blogs",
+  },
+  {
+    name: "Logout",
+    url: "/",
+  },
+];
+const settingsPublic = [
+  {
+    name: "Login",
+    url: "/login",
+  },
+  {
+    name: "Register",
+    url: "/register",
+  },
+];
+
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const { currentUser } = useSelector((state) => state.auth);
+  const { logout } = useAuthCall();
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -63,8 +97,9 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            BLOG APP
+            👩‍💻BLOG APP
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -96,13 +131,18 @@ function NavBar() {
             >
               {/* MOBILE MENU ----------------------------------------- */}
               {pages?.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu} component={Link} to={page.url}>
+                <MenuItem
+                  key={index}
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={page.url}
+                >
                   <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -119,8 +159,9 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            BLOG APP
           </Typography>
+
           {/* MENU ---------------------------------- */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages?.map((page, index) => (
@@ -135,10 +176,19 @@ function NavBar() {
               </Button>
             ))}
           </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {currentUser?.image ? (
+                  <Avatar
+                    title={currentUser.first_name}
+                    // src="/static/images/avatar/2.jpg"
+                    src={currentUser.image}
+                  />
+                ) : (
+                  <Avatar src="/static/images/avatar/2.jpg" />
+                )}
               </IconButton>
             </Tooltip>
             <Menu
@@ -157,11 +207,27 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {currentUser
+                ? settings.map(({ name, url }) =>
+                    name === "Logout" ? (
+                      <MenuItem key={name} onClick={handleCloseUserMenu}>
+                        <Button onClick={logout}>{name}</Button>
+                      </MenuItem>
+                    ) : (
+                      <MenuItem key={name} onClick={handleCloseUserMenu}>
+                        <Button component={Link} to={url}>
+                          {name}
+                        </Button>
+                      </MenuItem>
+                    )
+                  )
+                : settingsPublic.map(({ name, url }) => (
+                    <MenuItem key={name} onClick={handleCloseUserMenu}>
+                      <Button component={Link} to={url}>
+                        {name}
+                      </Button>
+                    </MenuItem>
+                  ))}
             </Menu>
           </Box>
         </Toolbar>

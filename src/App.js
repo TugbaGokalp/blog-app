@@ -1,39 +1,35 @@
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import AppRouter from "./router/AppRouter";
-import store, { persistor } from "./app/store";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { blue, blueGrey, pink, teal } from "@mui/material/colors";
 import { Provider } from "react-redux";
-import { blueGrey } from "@mui/material/colors"
-import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
-
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "./app/store";
 function App() {
   const theme = createTheme({
     palette: {
-      warning: {
-        light: "#ffb74d",
-        main: "#ffa726",
-        dark: "#f57c00",
+      primary: {
+        main: teal["200"],
+        light: teal["100"],
       },
       secondary: {
         main: blueGrey["900"],
-      },  
-      
+      },
     },
   });
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      <Provider store={store}>
-
-        <PersistGate loading={null} persistor={persistor}>
-          <AppRouter />
-        </PersistGate>
-        
-      </Provider>
-      <ToastContainer/>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <CssBaseline />
+          <PersistGate loading={null} persistor={persistor}>
+            <AppRouter />
+          </PersistGate>
+        </Provider>
+        <ToastContainer />
+      </ThemeProvider>
+    </>
   );
 }
-
 export default App;

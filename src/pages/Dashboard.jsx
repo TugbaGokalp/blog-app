@@ -1,43 +1,35 @@
-import React from "react";
-import BlogCard from "../components/blog/BlogCard";
-
-import { useDispatch, useSelector } from "react-redux";
-import { fetchStart, getSuccess } from "../features/blogSlice";
 import axios from "axios";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import BlogCard from "../components/blog/BlogCard";
+// import { fetchStart, getSuccess } from "../features/blogSlice";
 import useBlogCall from "../hooks/useBlogCalls";
-
+import { Grid } from "@mui/material";
 const Dashboard = () => {
-
-  const {getBlogData} = useBlogCall()
-  const {blogs} = useSelector((state) => state.blog)
-  console.log(blogs)
-  const dispatch = useDispatch()
+  const { getBlogData } = useBlogCall();
+  const { blogs } = useSelector((state) => state.blog);
 
   useEffect(() => {
-    getBlogData("blogs")
-  })
+    getBlogData("blogs");
+  }, []);
 
-  const getBlogListData = async()=>{
-    dispatch(fetchStart)
-    const BASE_URL="http://32312.fullstack.clarusway.com/api/blogs/"
-    try {
-      const {data}= await axios(`${BASE_URL}`)
-      dispatch(getSuccess(data))   
-      
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
- 
+  //   return <BlogCard />;
+  // };
+  // export default Dashboard;
 
   return (
-    <>
-      <BlogCard   />
-    </>
+    <Grid
+      container
+      spacing={2}
+      align="center"
+      sx={{ minHeight: "90vh", display: "flex", alignItems: "center" }}
+    >
+      {blogs?.map((blog) => (
+        <Grid item xs={12} sm={6} md={4} lg={3} key={blog.id}>
+          <BlogCard blog={blog} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
-
 export default Dashboard;
