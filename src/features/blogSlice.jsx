@@ -4,6 +4,7 @@ const blogSlice = createSlice({
   name: "blog",
   initialState: {
     blogsList: [],
+    categories: [],
     detailData:[],
     loading: false,
     error: false,
@@ -13,9 +14,9 @@ const blogSlice = createSlice({
       state.loading = true;
       state.error = false;
     },
-    getSuccess: (state, { payload }) => {
+    getSuccess: (state, { payload:{data, url} }) => {
       state.loading = false;
-      state.blogsList = payload;
+      state[url] = data;
     },
     getSuccessDetail: (state, { payload }) => {
       state.loading = false;

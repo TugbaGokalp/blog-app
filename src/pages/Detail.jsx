@@ -15,7 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchStart, getSuccessDetail } from "../features/blogSlice";
+import { fetchStart, getSuccess } from "../features/blogSlice";
 import axios from "axios";
 
 const Detail = () => {
@@ -43,7 +43,7 @@ const Detail = () => {
         },
       });
       console.log(data);
-      dispatch(getSuccessDetail(data));
+      dispatch(getSuccess(data));
     } catch (error) {
       console.log(error);
     }
