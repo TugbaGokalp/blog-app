@@ -1,4 +1,4 @@
-# STOCK APP
+# BLOG APP
 
 - This project is a website that pulls data from a real database and users can blog, edit, comment and like.
 
