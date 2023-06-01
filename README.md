@@ -80,10 +80,9 @@ Please pay attention to the following.
 - `@mui/material-ui`: Material UI component library used for creating user interface elements.
 - `yup`: Used for schema validation.
 - `@mui/icons-material`: Used for using Material UI icons.
-- `@mui/x-data-grid`: Used for creating data table components.
-- `@tremor/react`: Used for creating charts.
 - `formik`: Used for form handling and validation.
 - `react-persist`: Used for storing application state in local storage.
 - `react-toastify`: Used for displaying notification messages.
 
 
+[Tugba Gokalp]
